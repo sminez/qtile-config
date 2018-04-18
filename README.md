@@ -1,3 +1,9 @@
+My qtile config
+===============
+
+![dirty](misc/scrot1.png)
+![clean](misc/scrot2.png)
+
 # Setting up qtile
 qtile docs can be found [here](0)
 
