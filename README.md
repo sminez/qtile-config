@@ -13,7 +13,7 @@ $ sudo python3 -m pip install xcffib cairocfii qtile
 
 ### Adding qtile to the desktop list
 ```bash
-$ cp qtile.desktop /usr/share/xsessions/
+$ cp misc/qtile.desktop /usr/share/xsessions/
 ```
 
 
