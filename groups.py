@@ -20,7 +20,7 @@ NOTE :: Match is imported from libqtile.config
         init=True
     )
 '''
-from libqtile.config import Group
+from libqtile.config import Group, ScratchPad, DropDown
 
 
 # Named Groups copied from i3
@@ -36,6 +36,15 @@ groups = [
     Group("8 λ"),
     Group("9 "),
     Group("10 "),
+    # Scratchpads on M-- and M-S--
+    ScratchPad("scratchpad", [
+        # NOTE :: Need to force spawning as a new process so that
+        #         qtile can capture the new terminal by pid.
+        DropDown("term", "mate-terminal --disable-factory",
+                 x=0.1, y=0.1, width=0.8, height=0.8),
+        DropDown("ipython", "python3.6 -m qtconsole",
+                 x=0.1, y=0.1, width=0.8, height=0.8)
+    ]),
 ]
 
 # Simple numbered groups

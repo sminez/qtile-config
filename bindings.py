@@ -118,6 +118,10 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-C-w", lazy.spawn(TERMINAL + ' -e "weechat"')),
     ("M-C-t", lazy.spawn("thunar")),
 
+    # Scratchpad toggles
+    ("M-<minus>", lazy.group['scratchpad'].dropdown_toggle('term')),
+    ("M-S-<minus>", lazy.group['scratchpad'].dropdown_toggle('ipython')),
+
     # .: Layout / Focus Manipulation :. #
     ("M-f", lazy.window.toggle_fullscreen()),
     # Toggle between the available layouts.
@@ -149,7 +153,7 @@ keys = [EzKey(k[0], *k[1:]) for k in [
 ]]
 
 # .: Jump between groups and also throw windows to groups :. #
-for _ix, group in enumerate(groups):
+for _ix, group in enumerate(groups[:10]):
     # Index from 1-0 instead of 0-9
     ix = 0 if _ix == 9 else _ix + 1
 
