@@ -41,9 +41,11 @@ groups = [
         # NOTE :: Need to force spawning as a new process so that
         #         qtile can capture the new terminal by pid.
         DropDown("term", "mate-terminal --disable-factory",
-                 x=0.1, y=0.1, width=0.8, height=0.8),
+                 on_focus_lost_hide=False, x=0.1, y=0.1,
+                 width=0.8, height=0.8),
         DropDown("ipython", "python3.6 -m qtconsole",
-                 x=0.1, y=0.1, width=0.8, height=0.8)
+                 on_focus_lost_hide=False, x=0.1, y=0.1,
+                 width=0.8, height=0.8)
     ]),
 ]
 
