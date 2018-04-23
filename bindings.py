@@ -51,7 +51,8 @@ def focus_or_switch(group_name):
 
         try:
             # Jump to that screen if we are active
-            qtile.toScreen(groups.index(group_name))
+            index = groups.index(group_name)
+            qtile.toScreen(index)
         except ValueError:
             # We're not active so pull the group to the current screen
             qtile.currentScreen.setGroup(qtile.groupMap[group_name])
@@ -84,8 +85,8 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-C-<Right>", lazy.layout.grow_right()),
 
     # .: Xmonad :. #
-    ("M-<slash>", lazy.layout.maximize()),
-    ("M-S-<slash>", lazy.layout.normalize()),
+    # ("M-<slash>", lazy.layout.maximize()),
+    # ("M-S-<slash>", lazy.layout.normalize()),
     # Swap the position of the master/child panes
     ("M-<backslash>", lazy.layout.flip()),
     ("M-<minus>", lazy.layout.shrink()),
@@ -119,8 +120,8 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-C-t", lazy.spawn("thunar")),
 
     # Scratchpad toggles
-    ("M-<minus>", lazy.group['scratchpad'].dropdown_toggle('term')),
-    ("M-S-<minus>", lazy.group['scratchpad'].dropdown_toggle('ipython')),
+    ("M-<slash>", lazy.group['scratchpad'].dropdown_toggle('term')),
+    ("M-S-<slash>", lazy.group['scratchpad'].dropdown_toggle('ipython')),
 
     # .: Layout / Focus Manipulation :. #
     ("M-f", lazy.window.toggle_fullscreen()),

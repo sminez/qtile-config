@@ -112,6 +112,14 @@ def make_screen(systray=False):
             width=50,
             **FONT_PARAMS
         ),
+        # IP information
+        ShellScript(
+            fname="ipadr.sh",
+            update_interval=10,
+            markup=True,
+            padding=1,
+            **FONT_PARAMS
+        ),
         # Available apt upgrades
         ShellScript(
             fname="aptupgrades.sh",
@@ -128,14 +136,6 @@ def make_screen(systray=False):
             padding=1,
             **FONT_PARAMS
         ),
-        # IP information
-        # ShellScript(
-        #     fname="ipadr.sh",
-        #     update_interval=10,
-        #     markup=True,
-        #     padding=1,
-        #     **FONT_PARAMS
-        # ),
         # Wifi strength
         ShellScript(
             fname="wifi-signal.sh",
