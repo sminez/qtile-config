@@ -101,7 +101,7 @@ keys = [EzKey(k[0], *k[1:]) for k in [
 
     # .: Program Launchers :. #
     ("M-<Return>", lazy.spawn(TERMINAL + " -e zsh")),
-    ("M-<semicolon>", lazy.spawn('rofi -show run -i')),
+    ("M-<semicolon>", lazy.spawn('rofi-apps')),
     ("M-c", lazy.spawn(script("calendar.sh"))),
     ("M-n", lazy.spawn('rofi-wifi-menu')),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
