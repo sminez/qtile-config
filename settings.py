@@ -44,6 +44,12 @@ COLS = {
     "orange_0": "#fe8019",
     "orange_1": "#d65d0e",
     "orange_2": "#af3a03",
+    # Additional related colors from the deus colorscheme
+    'deus_1': '#2C323B',
+    'deus_2': '#646D7A',
+    'deus_3': '#48505D',
+    'deus_4': '#1A222F',
+    'deus_5': '#101A28',
 }
 
 # Modifier keys
@@ -57,13 +63,13 @@ DIRECTIONS = ("Left", "Down", "Up", "Right")
 
 # Programs
 # TERMINAL = "urxvt"
-# TERMINAL = "gnome-terminal"
-TERMINAL = "mate-terminal"
+# TERMINAL = "mate-terminal"
+TERMINAL = "tilix"
 
 # UI Config vars
 # FONT = 'Hack Regular'
-# FONT = 'Hermit medium'
-FONT = 'ProFont for Powerline Regular'
+# FONT = 'ProFont for Powerline Regular'
+FONT = 'TerminessTTF Nerd Font Medium'
 FOREGROUND = COLS['light_3']
 ALERT = COLS['red_1']
 FONTSIZE = 15

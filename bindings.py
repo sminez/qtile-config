@@ -70,12 +70,22 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-<Left>", lazy.layout.left()),
     ("M-<Right>", lazy.layout.right()),
 
+    ("M-h", lazy.layout.left()),
+    ("M-j", lazy.layout.down()),
+    ("M-k", lazy.layout.up()),
+    ("M-l", lazy.layout.right()),
+
     # Swap panes: target relative to active.
     # NOTE :: The `swap` commands are for XMonad
     ("M-S-<Up>", lazy.layout.shuffle_up()),
     ("M-S-<Down>", lazy.layout.shuffle_down()),
     ("M-S-<Left>", lazy.layout.shuffle_left(), lazy.layout.swap_left()),
     ("M-S-<Right>", lazy.layout.shuffle_right(), lazy.layout.swap_right()),
+
+    ("M-S-h", lazy.layout.shuffle_left(), lazy.layout.swap_left()),
+    ("M-S-j", lazy.layout.shuffle_down()),
+    ("M-S-k", lazy.layout.shuffle_up()),
+    ("M-S-l", lazy.layout.shuffle_right(), lazy.layout.swap_right()),
 
     # Grow/shrink the main the focused window
     # NOTE :: grow/shrink for XMonadTall, grow_X for Wmii/BSP
@@ -102,6 +112,8 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     # .: Program Launchers :. #
     ("M-<Return>", lazy.spawn(TERMINAL + " -e zsh")),
     ("M-<semicolon>", lazy.spawn('rofi-apps')),
+    ("M-d", lazy.spawn(
+        "dmenu_run -b -p 'λ' -sb '#83a598' -nb '#504945' -nf '#ebdbb2'")),
     ("M-c", lazy.spawn(script("calendar.sh"))),
     ("M-n", lazy.spawn('rofi-wifi-menu')),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
@@ -110,8 +122,8 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-C-c", lazy.spawn("google-chrome")),
     ("M-C-e", lazy.spawn("emacs")),
     ("M-C-f", lazy.spawn("firefox")),
-    ("M-C-i", lazy.spawn("python3 -m qtconsole")),
-    ("M-C-S-i", lazy.spawn("python3.6 -m qtconsole")),
+    ("M-C-i", lazy.spawn("python3.6 -m qtconsole")),
+    ("M-C-S-i", lazy.spawn("python3.7 -m qtconsole")),
     ("M-C-p", lazy.spawn("peek")),
     ("M-C-r", lazy.spawn(TERMINAL + ' -e "ranger"')),
     ("M-C-v", lazy.spawn(TERMINAL + ' -e "vim"')),

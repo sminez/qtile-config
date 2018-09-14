@@ -40,10 +40,10 @@ groups = [
     ScratchPad("scratchpad", [
         # NOTE :: Need to force spawning as a new process so that
         #         qtile can capture the new terminal by pid.
-        DropDown("term", "mate-terminal --disable-factory",
+        DropDown("term", "tilix --new-process",
                  on_focus_lost_hide=False, x=0.1, y=0.1,
                  width=0.8, height=0.8),
-        DropDown("ipython", "python3.6 -m qtconsole",
+        DropDown("ipython", "python3.7 -m qtconsole",
                  on_focus_lost_hide=False, x=0.1, y=0.1,
                  width=0.8, height=0.8)
     ]),
