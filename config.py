@@ -51,22 +51,22 @@ def make_screen(systray=False):
     blocks = [
         # Marker for the start of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
-            # font="Arial", foreground=COLS["dark_4"],
-            font="Arial", foreground=COLS["deus_3"],
+            font="Arial", foreground=COLS["dark_4"],
+            # font="Arial", foreground=COLS["deus_3"],
             text="◢", fontsize=50, padding=-1
         ),
         widget.GroupBox(
             other_current_screen_border=COLS["orange_0"],
-            # this_current_screen_border=COLS["blue_0"],
-            this_current_screen_border=COLS["deus_2"],
+            this_current_screen_border=COLS["blue_0"],
+            # this_current_screen_border=COLS["deus_2"],
             other_screen_border=COLS["orange_0"],
-            # this_screen_border=COLS["blue_0"],
-            this_screen_border=COLS["deus_2"],
-            # highlight_color=COLS["blue_0"],
-            highlight_color=COLS["deus_2"],
+            this_screen_border=COLS["blue_0"],
+            # this_screen_border=COLS["deus_2"],
+            highlight_color=COLS["blue_0"],
+            # highlight_color=COLS["deus_2"],
             urgent_border=COLS["red_1"],
-            # background=COLS["dark_4"],
-            background=COLS["deus_3"],
+            background=COLS["dark_4"],
+            # background=COLS["deus_3"],
             highlight_method="line",
             inactive=COLS["dark_2"],
             active=COLS["light_2"],
@@ -76,8 +76,8 @@ def make_screen(systray=False):
         ),
         # Marker for the end of the groups to give a nice bg: ◢■■■■■■■◤
         widget.TextBox(
-            # font="Arial", foreground=COLS["dark_4"],
-            font="Arial", foreground=COLS["deus_3"],
+            font="Arial", foreground=COLS["dark_4"],
+            # font="Arial", foreground=COLS["deus_3"],
             text="◤ ", fontsize=50, padding=-5
         ),
         # Show the title for the focused window
@@ -177,8 +177,8 @@ def make_screen(systray=False):
         blocks.insert(-1, widget.Systray())
         blocks.insert(-1, _separator())
 
-    # return Screen(top=bar.Bar(blocks, 25, background=COLS["dark_2"]))
-    return Screen(top=bar.Bar(blocks, 25, background=COLS["deus_1"]))
+    # return Screen(top=bar.Bar(blocks, 25, background=COLS["deus_1"]))
+    return Screen(top=bar.Bar(blocks, 25, background=COLS["dark_2"]))
 
 
 # XXX : When I run qtile inside of mate, I don"t actually want a qtile systray
