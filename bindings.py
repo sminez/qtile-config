@@ -25,7 +25,7 @@ from libqtile.config import Click, Drag, EzKey
 from libqtile.command import lazy
 
 from settings import MOD, TERMINAL
-from helpers import script
+from helpers import script, notify
 from groups import groups
 
 
@@ -58,6 +58,61 @@ def focus_or_switch(group_name):
             qtile.currentScreen.setGroup(qtile.groupMap[group_name])
 
     return _inner
+
+
+def to_scratchpad(window):
+    '''
+    Mark the current window as a scratchpad. This resises it, sets it to
+    floating and moves it to the hidden `scratchpad` group.
+    '''
+    try:
+        window.togroup('scratchpad')
+        window.on_scratchpad = True
+    except Exception as e:
+        # No `scratchpad` group
+        notify((
+            'You are attempting to use scratchpads without a `scratchpad`'
+            ' group being defined! Define one in your config and restart'
+            ' qtile to enable scratchpads.'
+        ))
+
+    window.floating = True
+    screen = window.group.screen
+
+    window.tweak_float(
+        x=int(screen.width / 10),
+        y=int(screen.height / 10),
+        w=int(screen.width / 1.2),
+        h=int(screen.height / 1.2),
+        )
+
+
+def show_scratchpad(qtile):
+    '''
+    Cycle through any current scratchpad windows on the current screen.
+    '''
+    scratchpad = qtile.groupMap.get('scratchpad')
+    if scratchpad is None:
+        notify((
+            'You are attempting to use scratchpads without a `scratchpad`'
+            ' group being defined! Define one in your config and restart'
+            ' qtile to enable scratchpads.'
+        ))
+
+    for w in list(qtile.currentGroup.windows):
+        if not hasattr(w, 'on_scratchpad'):
+            # Ensure that we don't get an attribute error
+            w.on_scratchpad = False
+
+        if w.on_scratchpad:
+            w.togroup('scratchpad')
+
+    if scratchpad.focusHistory:
+        # We have at least one scratchpad window to display so show that last
+        # one to be focused. This will cause us to cycle through all scratchpad
+        # windows in reverse order.
+        last_window = scratchpad.focusHistory[-1]
+        last_window.togroup(qtile.currentGroup.name)
 
 
 # qtile actually has an emacs style `EzKey` helper that makes specifying
@@ -134,6 +189,8 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     # Scratchpad toggles
     ("M-<slash>", lazy.group['scratchpad'].dropdown_toggle('term')),
     ("M-S-<slash>", lazy.group['scratchpad'].dropdown_toggle('ipython')),
+    # ("M-<slash>", lazy.window.function(to_scratchpad)),
+    # ("M-S-<slash>", lazy.function(show_scratchpad)),
 
     # .: Layout / Focus Manipulation :. #
     ("M-f", lazy.window.toggle_fullscreen()),

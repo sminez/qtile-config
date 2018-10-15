@@ -37,8 +37,41 @@ def autostart():
 
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
-    """Restart and reload config when screens are changed"""
+    """
+    Restart and reload config when screens are changed so that we correctly
+    init any new screens and correctly remove any old screens that we no
+    longer need.
+
+    There is an annoying side effect of removing a second monitor that results
+    in windows being 'stuck' on the now invisible desktop...
+    """
     qtile.cmd_restart()
+
+
+@hook.subscribe.setgroup
+def remove_scratchpad_on_group_change():
+    """
+    If we were showing windows from the scratchpad when we move to a new
+    group, we hide them again automatically.
+    """
+    previous_group = hook.qtile.currentScreen.previous_group
+    if not previous_group:
+        # No windows to hide
+        return
+
+    for w in list(previous_group.windows):
+        if w.on_scratchpad:
+            w.togroup('scratchpad')
+
+
+@hook.subscribe.client_new
+def init_scratchpad_on_new(window):
+    """
+    When a new window gets created, set the `on_scratchpad` property to false
+    so that it is there for us to filter on later when we use scratchpad
+    actions.
+    """
+    window.on_scratchpad = False
 
 
 # ----------------------------------------------------------------------------

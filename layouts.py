@@ -36,15 +36,6 @@ layouts = [
         margin=MARGIN,
         fair=False,
     ),
-    # XXX : Emulate Wmii tiling: each new window adds to the focused
-    #       column. Moving a window "out" of the current colmun creates
-    #       a new column.
-    layout.Wmii(
-        border_normal=BORDER_NORMAL,
-        border_focus=BORDER_FOCUS,
-        border_width=BORDER_WIDTH,
-        margin=MARGIN,
-    ),
     # XXX : My default layout. Single window fills the screen and it can
     #       keep a stack of secondary windows off to the side quite easily.
     layout.MonadTall(
@@ -56,13 +47,13 @@ layouts = [
     ),
     # XXX : Same idea as MonadTall but the smaller windows are along the
     #       top/bottom of the main window
-    # layout.MonadWide(
-    #     border_normal=BORDER_NORMAL,
-    #     border_focus=BORDER_FOCUS,
-    #     border_width=BORDER_WIDTH,
-    #     margin=MARGIN,
-    #     ratio=0.7,
-    # ),
+    layout.MonadWide(
+        border_normal=BORDER_NORMAL,
+        border_focus=BORDER_FOCUS,
+        border_width=BORDER_WIDTH,
+        margin=MARGIN,
+        ratio=0.7,
+    ),
     # XXX : Good for browser style flipping between windows when working on
     #       large coding projects (beats constant buffer/tab swaps in Vim!)
     layout.TreeTab(
@@ -76,6 +67,15 @@ layouts = [
         fontsize=FONT_PARAMS["fontsize"],
         font="ProFontWindows Nerd Font Mono Book",
     ),
+    # XXX : Emulate Wmii tiling: each new window adds to the focused
+    #       column. Moving a window "out" of the current colmun creates
+    #       a new column.
+    layout.Wmii(
+        border_normal=BORDER_NORMAL,
+        border_focus=BORDER_FOCUS,
+        border_width=BORDER_WIDTH,
+        margin=MARGIN,
+    ),
     # XXX : A simple grid fill of the screen aiming for square number tilings
     #       at the expense of leaving blank positions if it correctly places
     #       the remaining windows.
@@ -86,7 +86,7 @@ layouts = [
         margin=MARGIN,
     ),
     # XXX: Split the screen according to a given ratio. Kind of tricky to
-    #      know exactly what it will od without experimenting...!
+    #      know exactly what it will do without experimenting...!
     # layout.RatioTile(
     #     border_normal=BORDER_NORMAL,
     #     border_focus=BORDER_FOCUS,
