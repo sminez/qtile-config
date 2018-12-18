@@ -32,7 +32,7 @@ groups = [
     Group("4 "),
     Group("5 "),
     Group("6 "),
-    Group("7 "),
+    Group("7 "),
     Group("8 λ"),
     Group("9 "),
     Group("10 "),

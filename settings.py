@@ -64,7 +64,8 @@ DIRECTIONS = ("Left", "Down", "Up", "Right")
 # Programs
 # TERMINAL = "urxvt"
 # TERMINAL = "mate-terminal"
-TERMINAL = "tilix"
+# TERMINAL = "tilix"
+TERMINAL = "st"
 
 # UI Config vars
 # FONT = 'Hack Regular'
@@ -84,6 +85,7 @@ FONT_PARAMS = {
 
 # Location of my script files (must have a trailing slash!)
 SCRIPT_DIR = os.path.expanduser('~/bin/scripts/')
+ACME_SCRIPT_DIR = os.path.expanduser('~/Personal/acme-corp/scripts/')
 
 # Whether or not the primary monitor should spawn a systray
 # NOTE :: When embedding qtile inside of another desktop environment (such

@@ -52,7 +52,7 @@ layouts = [
         border_focus=BORDER_FOCUS,
         border_width=BORDER_WIDTH,
         margin=MARGIN,
-        ratio=0.7,
+        ratio=0.9,
     ),
     # XXX : Good for browser style flipping between windows when working on
     #       large coding projects (beats constant buffer/tab swaps in Vim!)
@@ -79,12 +79,12 @@ layouts = [
     # XXX : A simple grid fill of the screen aiming for square number tilings
     #       at the expense of leaving blank positions if it correctly places
     #       the remaining windows.
-    layout.Matrix(
-        border_normal=BORDER_NORMAL,
-        border_focus=BORDER_FOCUS,
-        border_width=BORDER_WIDTH,
-        margin=MARGIN,
-    ),
+    # layout.Matrix(
+    #     border_normal=BORDER_NORMAL,
+    #     border_focus=BORDER_FOCUS,
+    #     border_width=BORDER_WIDTH,
+    #     margin=MARGIN,
+    # ),
     # XXX: Split the screen according to a given ratio. Kind of tricky to
     #      know exactly what it will do without experimenting...!
     # layout.RatioTile(

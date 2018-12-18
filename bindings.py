@@ -21,10 +21,12 @@ Anything bound to arrow keys is movement based. I'm having problems binding
 `M-C={h,j,k,l}` which is preventing me using that for movement. (Though this
 may be something to do with my own ez_keys function...!)
 '''
+import os
+
 from libqtile.config import Click, Drag, EzKey
 from libqtile.command import lazy
 
-from settings import MOD, TERMINAL
+from settings import MOD, TERMINAL, ACME_SCRIPT_DIR
 from helpers import script, notify
 from groups import groups
 
@@ -169,22 +171,22 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-<semicolon>", lazy.spawn('rofi-apps')),
     ("M-d", lazy.spawn(
         "dmenu_run -b -p 'λ' -sb '#83a598' -nb '#504945' -nf '#ebdbb2'")),
-    ("M-c", lazy.spawn(script("calendar.sh"))),
     ("M-n", lazy.spawn('rofi-wifi-menu')),
     ("M-r", lazy.spawncmd()),  # Quick execution of shell commands
-    ("M-t", lazy.spawn(script("show-todo.sh"))),
     ("M-w", lazy.spawn('rofi -show window')),
-    ("M-C-c", lazy.spawn("google-chrome")),
+    ("M-C-a", lazy.spawn("acme")),
+    ("M-C-c", lazy.spawn("chromium-browser")),
     ("M-C-e", lazy.spawn("emacs")),
     ("M-C-f", lazy.spawn("firefox")),
+    ("M-C-h", lazy.spawn(TERMINAL + ' -e "htop"')),
     ("M-C-i", lazy.spawn("python3.6 -m qtconsole")),
     ("M-C-S-i", lazy.spawn("python3.7 -m qtconsole")),
+    ("M-C-o", lazy.spawn("oni")),
     ("M-C-p", lazy.spawn("peek")),
     ("M-C-r", lazy.spawn(TERMINAL + ' -e "ranger"')),
-    ("M-C-v", lazy.spawn(TERMINAL + ' -e "vim"')),
-    ("M-C-h", lazy.spawn(TERMINAL + ' -e "htop"')),
-    ("M-C-w", lazy.spawn(TERMINAL + ' -e "weechat"')),
     ("M-C-t", lazy.spawn("thunar")),
+    ("M-C-v", lazy.spawn(TERMINAL + ' -e "nvim"')),
+    ("M-C-w", lazy.spawn(TERMINAL + ' -e "weechat"')),
 
     # Scratchpad toggles
     ("M-<slash>", lazy.group['scratchpad'].dropdown_toggle('term')),
@@ -220,6 +222,11 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-A-l", lazy.spawn("lock-screen")),
     ("M-A-s", lazy.spawn("screenshot")),
     ("M-A-<Delete>", lazy.spawn(script("power-menu.sh"))),
+
+    # Acme editor shortcuts
+    ("M-o", lazy.spawn(os.path.join(ACME_SCRIPT_DIR, "afindfile.sh"))),
+    ("M-s", lazy.spawn(os.path.join(
+        ACME_SCRIPT_DIR, "acme-fuzzy-window-search.sh"))),
 ]]
 
 # .: Jump between groups and also throw windows to groups :. #
@@ -236,7 +243,6 @@ for _ix, group in enumerate(groups[:10]):
     ]])
 
 # .: Use the mouse to drag floating layouts :. #
-# XXX :: This can mess up layouts by having a perminant floating window...
 mouse = [
     Drag([MOD], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
