@@ -178,14 +178,10 @@ keys = [EzKey(k[0], *k[1:]) for k in [
     ("M-C-c", lazy.spawn("chromium-browser")),
     ("M-C-e", lazy.spawn("emacs")),
     ("M-C-f", lazy.spawn("firefox")),
-    ("M-C-h", lazy.spawn(TERMINAL + ' -e "htop"')),
     ("M-C-i", lazy.spawn("python3.6 -m qtconsole")),
     ("M-C-S-i", lazy.spawn("python3.7 -m qtconsole")),
-    ("M-C-o", lazy.spawn("oni")),
-    ("M-C-p", lazy.spawn("peek")),
     ("M-C-r", lazy.spawn(TERMINAL + ' -e "ranger"')),
     ("M-C-t", lazy.spawn("thunar")),
-    ("M-C-v", lazy.spawn(TERMINAL + ' -e "nvim"')),
     ("M-C-w", lazy.spawn(TERMINAL + ' -e "weechat"')),
 
     # Scratchpad toggles
